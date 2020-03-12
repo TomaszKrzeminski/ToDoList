@@ -1,0 +1,76 @@
+﻿body {
+    background-color: whitesmoke;
+}
+
+h1 {
+    color: burlywood;
+    font-family: arial, sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+   
+}
+h2 {
+    color: salmon;
+    font-family: arial, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+  
+}
+
+
+ul {
+    padding-left: 1.4em;
+    list-style-type: none;
+}
+li {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    width: 60.2em;
+    height: 2.8em;
+    background-color: white;
+}
+.delete, .done {
+    font-family: ModernPictograms;
+    font-size: 1em;
+    display: inline-block;
+    margin: 0.25em 0.2em;
+    margin-right: 0.2em;
+    margin-bottom:0.2em;
+    cursor: pointer;
+    border-radius: .2em;
+    line-height: 130%;
+    width: 2.0em;
+    height: 2.0em;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.done{float:left;}
+   
+
+.delete {
+    float: right;
+}
+
+.task {
+    font-family: ModernPictograms;
+    font-size: 1em;
+    display: inline-block;
+    
+    cursor: pointer;
+   
+    width: 2.2em;
+    height: 2.2em;
+    text-align: center;
+   
+}
+
+
+.delete:hover {
+    background-color: red;
+    color: white;
+}
+
+ .done:hover {
+    background-color: green;
+    color: white;
+}

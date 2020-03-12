@@ -2,10 +2,51 @@
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+   
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.min.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script src="script.js"></script>
     <meta charset="utf-8" />
-    <title></title>
+    <script>
+      
+    </script>
+
+    <title>TODOLIST</title>
 </head>
 <body>
+    <div class="container">
+        <h1>Moja Lista zadań</h1>
+        <div >
+            <h2>Zadania do wykonania</h2>
+            <ul id="todo" class="sortlist" >
+                <li></li>
+            </ul>
+            <button id="AddNewItem">Dodaj  Zadanie</button>
+        </div>
+        <div >
+            <h2>Zadania wykonane</h2>
+            <ul id="done" class="sortlist">
+                <li ></li>
+            </ul>
+
+        </div>
+        <div id="menu">
+            <form>
+                <p>
+                    <label for="task">Nowe Zadanie</label>
+                    <input name="task" id="task_name" />
+                </p>
+               
+            </form>
+
+        </div>
+
+    </div>
+
+
+
 
 </body>
 </html>
