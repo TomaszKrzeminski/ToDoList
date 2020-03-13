@@ -18,17 +18,17 @@
 <body>
     <div class="container">
         <h1>Moja Lista zadań</h1>
-        <div >
+        <div>
             <h2>Zadania do wykonania</h2>
-            <ul id="todo" class="sortlist" >
-                <li></li>
+            <ul id="todo" class="sortlist">
+                <li style="background-color:whitesmoke ; border:none;  " ></li>
             </ul>
             <button id="AddNewItem">Dodaj  Zadanie</button>
         </div>
-        <div >
+        <div>
             <h2>Zadania wykonane</h2>
             <ul id="done" class="sortlist">
-                <li ></li>
+                <li style="background-color:whitesmoke; border:none;  "></li>
             </ul>
 
         </div>
@@ -38,9 +38,26 @@
                     <label for="task">Nowe Zadanie</label>
                     <input name="task" id="task_name" />
                 </p>
-               
+
             </form>
 
+        </div>
+        <div id="Edit">
+            <form>
+                <p>
+                    <label for="task">Edytuj</label>
+                    <input name="edit_task" id="edit_task" />
+                </p>
+
+            </form>
+
+        </div>
+        <div id="Remove">
+            <form>
+                <p>
+                    <label for="Remove>">Czy na pewno chcesz usunąć zadanie</label>
+                </p>
+            </form>
         </div>
 
     </div>

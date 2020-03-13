@@ -1,9 +1,9 @@
 $(document).ready(
     function () {
 
-
-        
-       
+        var EditText = '';
+        var $EditElem;
+        var $RemoveElem;
 
 
         $('#AddNewItem').button({
@@ -24,8 +24,9 @@ $(document).ready(
 
 
 
-                    var taskHTML = '<li class="all"><span   class="done "></span>';                   
+                    var taskHTML = '<li class="all"><span   class="done "></span>';
                     taskHTML += '<span class="task"></span>';
+                    taskHTML += '<span class="edit"></span>';
                     taskHTML += '<span class="delete"></span></li>';
                     var NewTask = $(taskHTML);
 
@@ -38,7 +39,7 @@ $(document).ready(
                     $('#todo').prepend(NewTask);
 
 
-                   
+
 
                     $('.done').button(
                         {
@@ -57,9 +58,16 @@ $(document).ready(
                         }
                     );
 
+                    $('.edit').button(
+                        {
+
+                            icons: {
+                                primary: "ui-icon-wrench"
+                            }
+                        }
+                    );
 
 
-                  
 
 
 
@@ -79,7 +87,7 @@ $(document).ready(
             lielem.slideUp('250', function () {
 
                 var elem = $(this);
-               elem.detach();
+                elem.detach();
                 $('#done').prepend(elem);
                 elem.slideDown();
 
@@ -89,15 +97,74 @@ $(document).ready(
         });///
 
 
-        $('.sortlist').sortable({ connectWith: '.sortlist', cancel: '.delete,.done', placeholder: 'ui-state-highlight'});////
+        $('.sortlist').sortable({ connectWith: '.sortlist', cancel: '.delete,.done', placeholder: 'ui-state-highlight' });////
 
-        $('.sortlist').on('click', '.delete', function ()
-        {
 
-            $(this).parent('li').effect('explode', function () { $(this).remove(); });
+
+        $('#Remove').dialog(
+            {
+                modal: true,
+                autoOpen: false,
+                buttons: {
+                    'Tak': function () { $RemoveElem.effect('explode', function () { $(this).remove(); }); $(this).dialog('close');     },
+                    'Nie': function () { $(this).dialog('close'); }
+
+
+                }
+               }
+            );///
+
+
+        $('.sortlist').on('click', '.delete', function () {
+
+
+            $RemoveElem = $(this).parent('li');
+
+            $('#Remove').dialog('open');
+
+           // $(this).parent('li').effect('explode', function () { $(this).remove(); });
 
         }
         );///
+
+
+
+
+        $('#Edit').dialog({
+            modal: true, autoOpen: false, buttons: {
+                'Zapisz': function () {
+                    var text = $('#edit_task').val();
+                    $EditElem.text(text);
+                    $(this).dialog('close');
+
+                },
+                'Anuluj': function () { $(this).dialog('close'); }
+
+            }
+        });///
+
+
+
+        $('#todo').on('click', '.edit', function () {
+
+            EditText = $(this).prev().text();
+            $EditElem = $(this).prev();
+            $('#edit_task').val(EditText);
+            $('#Edit').dialog('open');
+
+        });/////
+
+
+        
+
+
+
+
+
+
+
+
+
 
     }
 );
