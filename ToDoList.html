@@ -17,18 +17,19 @@
 </head>
 <body>
     <div class="container">
-        <h1>Moja Lista zadań</h1>
+        <h1>Moja Lista zadań <span id="NumberTasksAll">0</span></h1>
         <div>
-            <h2>Zadania do wykonania</h2>
+            <h2>Zadania do wykonania  <span id="NumberTasksToDo">0</span></h2>
             <ul id="todo" class="sortlist">
-                <li style="background-color:whitesmoke ; border:none;  " ></li>
+
+            
             </ul>
             <button id="AddNewItem">Dodaj  Zadanie</button>
         </div>
         <div>
-            <h2>Zadania wykonane</h2>
+            <h2>Zadania wykonane     <span id="NumberTasksDone">0</span></h2>
             <ul id="done" class="sortlist">
-                <li style="background-color:whitesmoke; border:none;  "></li>
+             
             </ul>
 
         </div>
@@ -56,6 +57,13 @@
             <form>
                 <p>
                     <label for="Remove>">Czy na pewno chcesz usunąć zadanie</label>
+                </p>
+            </form>
+        </div>
+        <div id="Error">
+            <form>
+                <p>
+                    <label for="Error>">Już dodano do wykonanych</label>
                 </p>
             </form>
         </div>

@@ -5,6 +5,23 @@ $(document).ready(
         var $EditElem;
         var $RemoveElem;
 
+        function check() {
+
+            var T_all = 0;
+            var T_todo = 0;
+            var T_done = 0;
+
+            $('#todo li').each(function () { T_todo += 1; });
+            $('#done li').each(function () { T_done += 1; });
+            T_all = T_todo + T_done;
+            $('#NumberTasksToDo').text(T_todo);
+            $('#NumberTasksDone').text(T_done);
+            $('#NumberTasksAll').text(T_all);
+
+
+        }
+       
+
 
         $('#AddNewItem').button({
             icons: {
@@ -74,6 +91,13 @@ $(document).ready(
 
                     NewTask.show('clip', 250).effect('highlight', 1000);
                     $(this).dialog('close');
+                    ////
+
+                    check();
+
+
+
+                    ////
 
                 },
                 'Anuluj': function () { $(this).dialog('close'); }
@@ -91,9 +115,19 @@ $(document).ready(
                 $('#done').prepend(elem);
                 elem.slideDown();
 
+                ///
+                check();
+                ///
+
             });
 
 
+        });///
+
+
+        $('#done').on('click', '.done', function () {
+
+            $('#Error').dialog('open');
         });///
 
 
@@ -106,13 +140,56 @@ $(document).ready(
                 modal: true,
                 autoOpen: false,
                 buttons: {
-                    'Tak': function () { $RemoveElem.effect('explode', function () { $(this).remove(); }); $(this).dialog('close');     },
+                   
+                    'Tak': function () { $RemoveElem.slideDown();  $RemoveElem.remove(); $(this).dialog('close'); },
                     'Nie': function () { $(this).dialog('close'); }
 
 
-                }
+                },
+                close: function () {                 
+                                     
+                   
+
+                } 
                }
             );///
+
+        $('#Error').dialog(
+            {
+                modal: true,
+                autoOpen: false,
+                
+                close: function () {
+
+                    $(this).dialog('close');
+
+                }
+            }
+        );///
+
+
+
+        $('body').on('dialogclose', '#Remove', function () {
+
+            var T_all = 0;
+            var T_todo = 0;
+            var T_done = 0;
+
+            $('#todo li').each(function () { T_todo += 1; });
+            $('#done li').each(function () { T_done += 1; });
+            T_all = T_todo + T_done;
+            $('#NumberTasksToDo').text(T_todo);
+            $('#NumberTasksDone').text(T_done);
+            $('#NumberTasksAll').text(T_all);
+
+
+        } 
+        );///
+
+
+
+
+       
 
 
         $('.sortlist').on('click', '.delete', function () {
@@ -120,9 +197,8 @@ $(document).ready(
 
             $RemoveElem = $(this).parent('li');
 
-            $('#Remove').dialog('open');
-
-           // $(this).parent('li').effect('explode', function () { $(this).remove(); });
+            $('#Remove').dialog('open');         
+           
 
         }
         );///
@@ -154,13 +230,37 @@ $(document).ready(
 
         });/////
 
+        $('#done').on('click', '.edit', function () {
 
+            EditText = $(this).prev().text();
+            $EditElem = $(this).prev();
+            $('#edit_task').val(EditText);
+            $('#Edit').dialog('open');
+
+        });/////
         
 
+        $('.sortlist').on(
+
+            'click', 'li', function () {
+
+                var T_all = 0;
+                var T_todo = 0;
+                var T_done = 0;
+
+                $('#todo li').each(function () { T_todo += 1; });
+                $('#done li').each(function () { T_done += 1; });
+                T_all = T_todo + T_done;
+                $('#NumberTasksToDo').text(T_todo);
+                $('#NumberTasksDone').text(T_done);
+                $('#NumberTasksAll').text(T_all);
 
 
+            }
+        );///
 
 
+       
 
 
 
